@@ -5,9 +5,6 @@ import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.PluginManager;
@@ -39,16 +36,16 @@ public final class StopwatchSigns extends JavaPlugin implements Runnable
 			switch (this.active.get(watchName))
 			{
 			case 0:
-				return "Click to Start";
+				return "Punch to Start";
 			case 1:
-				return "Click to Stop";
+				return "Punch to Stop";
 			case 2:
-				return "Click to Reset";
+				return "Punch to Reset";
 			default:
-				return "ERROR";
+				return ChatColor.RED + "ERROR";
 			}
 		}
-		return "UNLINKED";
+		return ChatColor.RED + "UNLINKED";
 	}
 
 	public final String getTime(final String watchName)
@@ -62,7 +59,7 @@ public final class StopwatchSigns extends JavaPlugin implements Runnable
 			jout(watchName + " overflowed max time, it has been reset");
 			this.active.put(watchName, (byte) 0);
 			this.times.put(watchName, 0l);
-			return "00:00:00";
+			return ChatColor.RED + "00:00:00";
 		}
 
 		final int h = (int) t / (60 * 60);
@@ -70,9 +67,9 @@ public final class StopwatchSigns extends JavaPlugin implements Runnable
 		final int m = (int) t / 60;
 		final int s = (int) (t % 60);
 
-		return String.format("%d:%d:%d", h, m, s);
+		return String.format("%02d:%02d:%02d", h, m, s);
 		}
-		return "INVALID";
+		return ChatColor.RED + "INVALID";
 	}
 
 	public StopwatchSigns()
