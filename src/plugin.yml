@@ -1,0 +1,30 @@
+name: StopwatchSigns
+version: 1.0
+author: nickrak
+main: nickrak.stopwatchsigns.StopwatchSigns
+commands:
+  scansigns:
+    description: Scan all loaded chunks for unattached signs.
+    permission: stopwatchsigns.scan
+    usage: "Usage: /scansigns"
+permissions:
+  stopwatchsigns.create:
+    description: Allows the user to create Stopwatch Signs
+    default: op
+  stopwatchsigns.scan:
+    description: Allows the user to force the server to scan all loaded chunks for mismatched signs.
+    default: op
+  stopwatchsigns.destroy:
+    description: Allows the user to destroy Stopwatch Signs
+    default: op
+  stopwatchsigns.use:
+    description: Allows the user to start/stop Stopwatch Signs
+    default: true
+  stopwatchsigns.*:
+    description: Allows the user to access any/all Stopwatch Sign permissions.
+    children:
+      stopwatchsigns.create: true
+      stopwatchsigns.destroy: true
+      stopwatchsigns.use: true
+      stopwatchsigns.scan: true
+  
