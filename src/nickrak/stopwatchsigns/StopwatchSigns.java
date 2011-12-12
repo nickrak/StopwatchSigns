@@ -174,22 +174,4 @@ public final class StopwatchSigns extends JavaPlugin implements Runnable
 			}
 		}
 	}
-
-	@Override
-	public final boolean onCommand(CommandSender sender, Command command, String label, String[] args)
-	{
-		if (!command.getName().equalsIgnoreCase("scansigns"))
-		{
-			return false;
-		}
-		if (sender instanceof Player && !sender.hasPermission("stopwatchsigns.scan"))
-		{
-			sender.sendMessage(ChatColor.RED + "You do not have permisison to scan the world.");
-			return true;
-		}
-
-		// TODO: scan all here
-
-		return true;
-	}
 }
